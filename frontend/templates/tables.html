@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "base_templates/base.html" %}
+
+<head>
+
+    {% block title %}SB Admin 2 - Tables{% endblock %}
+
+    <!-- Custom styles for this page -->
+    <link href="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+            
+    <!-- Main Content -->
+    {% block main_content %}
+
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+            <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                For more information about DataTables, please visit the <a target="_blank"
+                    href="https://datatables.net">official DataTables documentation</a>.</p>
+    
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>年度</th>
+                                    <th>縣市別</th>
+                                    <th>包制戶數</th>
+                                    <th>包制售電量</th>
+                                    <th>表制戶數</th>
+                                    <th>表制售電量</th>
+                                    <th>LED戶數</th>
+                                    <th>LED售電量</th>
+                                </tr>
+                            </thead>
+                            <!-- <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                </tr>
+                            </tfoot> -->
+                            <tbody>
+                                {% for row in rows %}
+                                    <tr>
+                                    <td class="center">{{ row.idx }}</td>
+                                    <td class="center">{{ row.year }}</td>
+                                    <td class="center">{{ row.city }}</td>
+                                    <td class="center">{{ row.HouseholdsOfTypeA }}</td>
+                                    <td class="center">{{ row.ElecSalesOfTypeA }}</td>
+                                    <td class="center">{{ row.HouseholdsOfTypeB }}</td>
+                                    <td class="center">{{ row.ElecSalesOfTypeB }}</td>
+                                    <td class="center">{{ row.HouseholdsOfLED }}</td>
+                                    <td class="center">{{ row.ElecSalesOfLED }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    
+    
+    <!-- End of Main Content -->
+    {% endblock %}
+            
+
+</body>
+
+</html>
