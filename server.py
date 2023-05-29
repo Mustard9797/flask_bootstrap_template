@@ -14,15 +14,15 @@ app = Flask(__name__, static_folder="./frontend/static", template_folder="./fron
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', status=["active",0,0])
   
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', )
 
 @app.route('/chart')
 def chart():
-    return render_template('charts.html')
+    return render_template('charts.html', status=[0,"active",0])
 
 ### 資料庫相關 ###
 
@@ -38,7 +38,7 @@ db.init_app(app)
 def table():
     # 查詢 TestTable 資料表中的所有資料
     rows = queryDB(TestTable)
-    return render_template('tables.html', rows=rows)
+    return render_template('tables.html', rows=rows, status=[0,0,"active"])
 
 @app.route('/db_insert')
 def db_insert():
